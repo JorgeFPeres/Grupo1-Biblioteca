@@ -1,6 +1,7 @@
 package com.mjv.grupo1.Livraria.repository;
 
-import java.awt.List;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,10 +20,10 @@ public class CadastroRepository {
 		Integer id = cadastro.getId();
 		Cadastro dbCadastro = select(id);
 		if(dbCadastro!=null) {
-			dados.put(id, pessoa);
+			dados.put(id, cadastro);
 		}
 	}
-	public List<Cadastro> selectAll() {
+	public ArrayList<Cadastro> selectAll() {
 		return new ArrayList<Cadastro>(dados.values());
 	}
 }
