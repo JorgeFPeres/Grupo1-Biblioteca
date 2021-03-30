@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.mjv.grupo1.Livraria.dto.CadastroDto;
+
 import lombok.NoArgsConstructor;
 
 
@@ -45,6 +47,27 @@ public class Cadastro {
 		this.nome = nome;
 	}
 	
+
+	public Cadastro(Integer id, String cpf, String nome, String email, String telefone, String login, String senha,
+			Endereco endereco) {
+		this.id = id;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.login = login;
+		this.senha = senha;
+//		this.endereco = endereco;
+	}
+	
+
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
+//
+//	public void setEndereco(Endereco endereco) {
+//		this.endereco = endereco;
+//	}
 
 	public Integer getId() {
 		return id;
