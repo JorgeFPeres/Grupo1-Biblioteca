@@ -1,10 +1,35 @@
 package com.mjv.grupo1.Livraria.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "endereco")
 public class Endereco {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String cep, logradouro, bairro, localidade, uf;
 	private Integer ibge;
 	
+	public Endereco() {
+		
+	}
+	
+	public Endereco(Integer id, String cep, String logradouro, String bairro, String localidade, String uf,
+			Integer ibge) {
+		this.id = id;
+		this.cep = cep;
+		this.logradouro = logradouro;
+		this.bairro = bairro;
+		this.localidade = localidade;
+		this.uf = uf;
+		this.ibge = ibge;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1,12 +1,36 @@
 package com.mjv.grupo1.Livraria.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "livro")
 public class Livro {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String isbn, titulo;
 	private Double valorDiaria;
 	private Integer exemplares, reservados;
 	
+	
+	public Livro() {
+		
+	}
+	
+	public Livro(Integer id, String isbn, String titulo, Double valorDiaria, Integer exemplares, Integer reservados) {
+		this.id = id;
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.valorDiaria = valorDiaria;
+		this.exemplares = exemplares;
+		this.reservados = reservados;
+	}
+
 	public Integer getId() {
 		return id;
 	}
