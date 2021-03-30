@@ -1,5 +1,6 @@
 package com.mjv.grupo1.Livraria.model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "endereco")
+@Embeddable
 public class Endereco {
 	
 	@Id

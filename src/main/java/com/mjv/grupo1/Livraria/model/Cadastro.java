@@ -1,16 +1,11 @@
 package com.mjv.grupo1.Livraria.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.mjv.grupo1.Livraria.dto.CadastroDto;
 
 import lombok.NoArgsConstructor;
 
@@ -31,13 +26,12 @@ public class Cadastro {
 	private String email;
 //	@Column(nullable = false)
 	private String telefone;
-//	@Column(nullable = false, unique = true, length = 20)
-	private String login;
-//	@Column(nullable = false)
-	private String senha;
+	@Embedded
+	private Login login;
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "endereco_id", referencedColumnName = "id" ,nullable = false)
-//	private Endereco endereco;
+	@Embedded
+	private Endereco endereco;
 	
 	public Cadastro() {
     }
@@ -55,8 +49,8 @@ public class Cadastro {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
-		this.login = login;
-		this.senha = senha;
+//		this.login = login;
+//		this.senha = senha;
 //		this.endereco = endereco;
 	}
 	
@@ -107,22 +101,6 @@ public class Cadastro {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 }
