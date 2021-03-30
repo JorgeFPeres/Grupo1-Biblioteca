@@ -2,27 +2,27 @@ package com.mjv.grupo1.Livraria.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 import com.mjv.grupo1.Livraria.model.Cadastro;
 import com.mjv.grupo1.Livraria.repository.CadastroRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class CadastroServices {
 	
+	private final CadastroRepository cadastroRepository;
+	
 	@Autowired
-	private CadastroRepository cadastroRepository;
-	
-	
-	public void insert(Cadastro cadastro) {
-		if(cadastro==null)
-			System.out.println("O Cadastro não pode ser nulo");
-		
-		String login = cadastro.getLogin();
-		
-		if(login ==null || login.length() >20)
-			System.out.println("O login não pode ser nulo e nem ter 20 caracteres");
-		
-		cadastroRepository.save(cadastro);
+	public CadastroServices(CadastroRepository cadastroRepository) {
+		this.cadastroRepository = cadastroRepository;
 	}
 	
+	public Cadastro salvar(Cadastro cadastro) {
+		return cadastroRepository.save(cadastro);
+	}
 	
 }
