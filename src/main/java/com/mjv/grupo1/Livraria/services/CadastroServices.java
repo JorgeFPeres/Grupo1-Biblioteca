@@ -1,29 +1,28 @@
 package com.mjv.grupo1.Livraria.services;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mjv.grupo1.Livraria.model.Cadastro;
+import com.mjv.grupo1.Livraria.repository.CadastroRepository;
 
 public class CadastroServices {
-	private Map<Integer, Cadastro> dados = new HashMap<Integer, Cadastro>();
+	
+	@Autowired
+	private CadastroRepository cadastroRepository;
+	
 	
 	public void insert(Cadastro cadastro) {
-		dados.put(dados.size()+1,cadastro);
+		if(cadastro==null)
+			System.out.println("O Cadastro não pode ser nulo");
+		
+		String login = cadastro.getLogin();
+		
+		if(login ==null || login.length() >20)
+			System.out.println("O login não pode ser nulo e nem ter 20 caracteres");
+		
+		cadastroRepository.save(cadastro);
 	}
-	public Cadastro select(Integer id) {
-		return dados.get(id);
-	}
-	public void update(Cadastro cadastro) {
-		Integer id = cadastro.getId();
-		Cadastro dbCadastro = select(id);
-		if(dbCadastro!=null) {
-			dados.put(id, cadastro);
-		}
-	}
-	public ArrayList<Cadastro> selectAll() {
-		return new ArrayList<Cadastro>(dados.values());
-	}
+	
+	
 }

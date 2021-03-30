@@ -1,22 +1,61 @@
 package com.mjv.grupo1.Livraria.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "cadastro")
 public class Cadastro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(nullable = false, unique = true, length = 11)
 	private String cpf;
+	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private String email;
+	@Column(nullable = false)
 	private String telefone;
+	@Column(nullable = false, unique = true, length = 20)
 	private String login;
+	@Column(nullable = false)
 	private String senha;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "endereco_id", referencedColumnName = "id" ,nullable = false)
+	private Endereco endereco;
+	
+	public Cadastro() {
+    }
+
+	public Cadastro(Integer id, String cpf, String nome, String email, String telefone, String login, String senha,
+			Endereco endereco) {
+		this.id = id;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.login = login;
+		this.senha = senha;
+		this.endereco = endereco;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public Integer getId() {
 		return id;

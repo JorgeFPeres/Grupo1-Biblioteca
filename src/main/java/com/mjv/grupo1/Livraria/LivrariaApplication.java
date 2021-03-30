@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.mjv.grupo1.Livraria.sample.ApplicationSample;
+
 @SpringBootApplication
 public class LivrariaApplication {
 
@@ -12,9 +14,9 @@ public class LivrariaApplication {
 		SpringApplication.run(LivrariaApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner run(ApplicationSample as) throws Exception {
+	public CommandLineRunner run(ApplicationSample bean) throws Exception {
 		return args -> {
-			as.criarCadastro();
+			bean.criarCadastro();
 		};
 	}
 
