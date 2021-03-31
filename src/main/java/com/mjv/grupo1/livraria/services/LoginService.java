@@ -2,6 +2,8 @@ package com.mjv.grupo1.livraria.services;
 
 import java.util.Date;
 
+import javax.security.auth.login.LoginException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,8 +15,10 @@ import com.mjv.grupo1.livraria.model.Cadastro;
 import com.mjv.grupo1.livraria.model.Login;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class LoginService {
 
 	@Autowired
@@ -23,7 +27,7 @@ public class LoginService {
 	@Autowired
 	private PasswordEncoder encoder;
 
-	public Sessao logar(Login login) {
+	public Sessao logar(Login login) throws LoginException {
 		Cadastro usuario = repository.findByLoginUsuario(login.getUsuario());
 		if(usuario!=null) {
 			
@@ -33,23 +37,18 @@ public class LoginService {
 				Sessao sessao = new Sessao();
 				sessao.setLogin(login.getUsuario());
 				
-				Date inicio = new Date(System.currentTimeMillis());
-				Date fim = new Date(System.currentTimeMillis() + JWTConstants.TOKEN_EXPIRATION);
+				sessao.setDataInicio(new Date(System.currentTimeMillis()));
+				sessao.setDataFim(new Date(System.currentTimeMillis() + JWTConstants.TOKEN_EXPIRATION));
 				
-				sessao.setDataInicio(inicio);
-				sessao.setDataFim(fim);
-				
-				String token= JWTUtils.creteToken(login.getUsuario(), inicio, fim);
-				
+				String token= JWTUtils.creteToken(login.getUsuario(), sessao.getDataInicio(), sessao.getDataFim());
+								
 				sessao.setToken(token);
 				return sessao;
 			}else {
-				throw new RuntimeException("Senha inválida");
+				throw new LoginException("Senha inválida.");
 			}
 			
 			
-		}
-		
-		throw new RuntimeException("Login inválido");
+		}throw new LoginException("Usuário não cadastrado.");
 	}
 }
