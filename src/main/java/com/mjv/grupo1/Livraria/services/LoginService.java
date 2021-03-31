@@ -20,6 +20,17 @@ public class LoginService {
 		return false;
 	}
 
+	public void criarLogin(String login, String senha) {
+		if (login.length() > 20) {
+			throw new IllegalArgumentException("Login deve ter no máximo 20 caracteres.");
+		} else if (loginRepository.findByLogin(login) != null) {
+			throw new IllegalArgumentException("Este login ja está em uso. Escolha outro.");
+		} else {
+			Login log = new Login(login, senha);
+			loginRepository.save(log);
+		}
+	}
+
 	public Login findByLogin(String login) {
 		return loginRepository.findByLogin(login);
 	}

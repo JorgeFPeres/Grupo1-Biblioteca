@@ -10,6 +10,16 @@ public class Login {
 	private String login;
 	@Column(nullable = false)
 	private String senha;
+	
+	
+
+	public Login() {
+	}
+
+	public Login(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+	}
 
 	public String getLogin() {
 		return login;

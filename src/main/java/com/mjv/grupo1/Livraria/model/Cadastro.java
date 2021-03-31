@@ -1,5 +1,6 @@
 package com.mjv.grupo1.Livraria.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,7 @@ public class Cadastro {
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "endereco_id", referencedColumnName = "id" ,nullable = false)
 	@Embedded
+	@Column (nullable = false)
 	private Endereco endereco;
 	
 	public Cadastro() {
