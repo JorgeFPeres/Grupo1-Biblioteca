@@ -1,4 +1,4 @@
-package com.mjv.grupo1.Livraria.config;
+package com.mjv.grupo1.Livraria.config.doc;
 
 import java.util.ArrayList;
 import java.util.Arrays;

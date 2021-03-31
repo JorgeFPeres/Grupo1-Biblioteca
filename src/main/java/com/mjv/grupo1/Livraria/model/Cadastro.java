@@ -1,11 +1,13 @@
 package com.mjv.grupo1.Livraria.model;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.NoArgsConstructor;
@@ -29,10 +31,10 @@ public class Cadastro {
 	private String telefone;
 	@Embedded
 	private Login login;
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "endereco_id", referencedColumnName = "id" ,nullable = false)
-	@Embedded
-	@Column (nullable = false)
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "endereco_id", referencedColumnName = "id" ,nullable = false)
+	//@Embedded
 	private Endereco endereco;
 	
 	public Cadastro() {
@@ -55,16 +57,6 @@ public class Cadastro {
 //		this.senha = senha;
 //		this.endereco = endereco;
 	}
-	
-
-//	public Endereco getEndereco() {
-//		return endereco;
-//	}
-//
-//	public void setEndereco(Endereco endereco) {
-//		this.endereco = endereco;
-//	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -103,6 +95,19 @@ public class Cadastro {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+	public Login getLogin() {
+		return login;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 }

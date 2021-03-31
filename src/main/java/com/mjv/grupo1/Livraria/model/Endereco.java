@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "endereco")
-@Embeddable
+//@Embeddable
 public class Endereco {
 	
 	@Id

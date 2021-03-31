@@ -3,7 +3,10 @@ package com.mjv.grupo1.Livraria.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +22,18 @@ public class Locacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "dt_agendamento")
 	private Date dataAgendamento;
 	private Date dataRetirada;
 	private Date finalizacao;
 	private Double valorTotal;
 	
+	@Enumerated(EnumType.STRING)
 	private LocacaoStatus status;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cadastro_id", referencedColumnName= "id")
-	Cadastro cadastro;
+	private Cadastro cadastro;
 	
 	
 	//Construtores

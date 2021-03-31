@@ -7,26 +7,23 @@ import javax.persistence.Embeddable;
 public class Login {
 
 	@Column(nullable = false, unique = true, length = 20)
-	private String login;
+	private String usuario;
 	@Column(nullable = false)
 	private String senha;
-	
-	
 
 	public Login() {
 	}
 
-	public Login(String login, String senha) {
-		this.login = login;
+	public Login(String usuario, String senha) {
+		this.usuario = usuario;
 		this.senha = senha;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getUsuario() {
+		return usuario;
 	}
-
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -39,7 +36,7 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login login=" + login + "\nSenha=" + senha;
+		return "Login usuario=" + usuario + "\nSenha=" + senha;
 	}
 
 }
