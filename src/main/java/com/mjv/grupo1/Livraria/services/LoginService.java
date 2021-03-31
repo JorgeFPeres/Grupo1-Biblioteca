@@ -25,7 +25,7 @@ public class LoginService {
 	@Autowired
 	private PasswordEncoder encoder;
 
-	public Sessao login(Login login) {
+	public Sessao logar(Login login) {
 		Cadastro usuario = repository.findByLoginUsuario(login.getUsuario());
 		if(usuario!=null) {
 			

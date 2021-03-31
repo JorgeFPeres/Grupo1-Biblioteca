@@ -15,19 +15,17 @@ import com.mjv.grupo1.Livraria.dto.CadastroDto;
 import com.mjv.grupo1.Livraria.model.Cadastro;
 import com.mjv.grupo1.Livraria.services.CadastroServices;
 
-@RequestMapping(path = "/cadastro")
+@RequestMapping(path = "/cadastros")
 @RestController
 public class CadastroController {
 	
 	@Autowired
 	private CadastroServices cadastroServices;
 	
-	
-	
 	@PostMapping
-	public ResponseEntity<Cadastro> salvar(@RequestBody CadastroDto dto) {
-		Cadastro cadastro = cadastroServices.save(dto.transformaParaObjeto());
-		return new ResponseEntity<>(cadastro, HttpStatus.CREATED);
+	public ResponseEntity<Integer> salvar(@RequestBody Cadastro body) {
+		body=cadastroServices.save(body);
+		return new ResponseEntity<>(body.getId(), HttpStatus.CREATED);
 	}
 	
 	@GetMapping

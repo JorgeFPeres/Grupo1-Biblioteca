@@ -2,6 +2,7 @@ package com.mjv.grupo1.Livraria.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(SWAGGER_WHITELIST).permitAll()
 		.antMatchers("/login").permitAll()
+		.antMatchers(HttpMethod.POST, "/cadastros").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
 		
 		.anyRequest().authenticated()
