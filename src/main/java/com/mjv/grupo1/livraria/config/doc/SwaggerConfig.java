@@ -39,7 +39,7 @@ public class SwaggerConfig {
 		docket
 		.globalOperationParameters(params)
 		.select()
-		.apis(RequestHandlerSelectors.basePackage("com.mjv.grupo1.Livraria"))
+		.apis(RequestHandlerSelectors.basePackage("com.mjv.grupo1.livraria.controller"))
 		.paths(PathSelectors.any())
 		.build()
 		.apiInfo(this.informacoesApi().build())

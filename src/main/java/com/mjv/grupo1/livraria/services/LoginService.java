@@ -13,10 +13,8 @@ import com.mjv.grupo1.livraria.model.Cadastro;
 import com.mjv.grupo1.livraria.model.Login;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class LoginService {
 
 	@Autowired
