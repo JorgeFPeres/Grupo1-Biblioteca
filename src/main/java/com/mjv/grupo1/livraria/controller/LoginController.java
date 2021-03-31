@@ -1,5 +1,7 @@
 package com.mjv.grupo1.livraria.controller;
 
+import javax.security.auth.login.LoginException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +18,7 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 	@PostMapping
-	public Sessao logar(@RequestBody Login login) {
+	public Sessao logar(@RequestBody Login login) throws LoginException {
 		return service.logar(login);
 	}
 }
