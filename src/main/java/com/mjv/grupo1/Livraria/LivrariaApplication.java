@@ -9,10 +9,13 @@ import com.mjv.grupo1.Livraria.sample.ApplicationSample;
 
 @SpringBootApplication
 public class LivrariaApplication {
-
+	/**
+	 * @author gleys
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(LivrariaApplication.class, args);
 	}
+	
 //	@Bean
 //	public CommandLineRunner run(ApplicationSample bean) throws Exception {
 //		return args -> {
