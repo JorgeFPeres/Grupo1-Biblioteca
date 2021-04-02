@@ -1,45 +1,48 @@
 package com.mjv.grupo1.livraria.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "locacao_item")
+@Table(name = "loc_item")
 public class LocacaoItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	private Date dataPrevisaoEntrega;
-	private Date dataEntrega;
+	private LocalDate dataPrevisaoEntrega;
+	private LocalDate dataEntrega;
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "livro_id", referencedColumnName="id")
-	Livro livro;
 
-	public LocacaoItem() {
-		
+	@ManyToOne
+	@JoinColumn(name = "id_livro")
+	private Livro livro;
+
+	@ManyToOne
+	@JoinColumn(name = "id_locacao")
+	private Locacao locacao;
+
+	public Locacao getLocacao() {
+		return locacao;
 	}
-	
-	public LocacaoItem(Integer id, Date dataPrevisaoEntrega, Date dataEntrega, Integer diarias, Double valorDiaria,
-			Double valorLocacao, Livro livro) {
-		this.id = id;
-		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
-		this.dataEntrega = dataEntrega;
-		this.diarias = diarias;
-		this.valorDiaria = valorDiaria;
-		this.valorLocacao = valorLocacao;
+
+	public void setLocacao(Locacao locacao) {
+		this.locacao = locacao;
+	}
+
+	public Livro getLivro() {
+		return livro;
+	}
+
+	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
 
@@ -51,19 +54,19 @@ public class LocacaoItem {
 		this.id = id;
 	}
 
-	public Date getDataPrevisaoEntrega() {
+	public LocalDate getDataPrevisaoEntrega() {
 		return dataPrevisaoEntrega;
 	}
 
-	public void setDataPrevisaoEntrega(Date dataPrevisaoEntrega) {
+	public void setDataPrevisaoEntrega(LocalDate dataPrevisaoEntrega) {
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
 	}
 
-	public Date getDataEntrega() {
+	public LocalDate getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
@@ -91,12 +94,4 @@ public class LocacaoItem {
 		this.valorLocacao = valorLocacao;
 	}
 
-	public Livro getLivro() {
-		return livro;
-	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-	}
-	
 }
