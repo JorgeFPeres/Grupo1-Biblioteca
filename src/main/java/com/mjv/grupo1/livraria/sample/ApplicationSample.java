@@ -19,11 +19,11 @@ public class ApplicationSample {
 		
 		cadastroRepository.save(cad);
 	}
-	public Cadastro buscarCadastro() {
-		Cadastro cad = cadastroRepository.findById(1).orElse(null);
+	public Cadastro buscarCadastro(Integer id) {
+		Cadastro cad = cadastroRepository.findById(id).get();
 		if(cad==null) {
 			criarCadastro();
-			cad = cadastroRepository.findById(1).orElse(null);
+			cad = cadastroRepository.findById(id).get();
 		}
 		return cad;
 	}
@@ -32,4 +32,6 @@ public class ApplicationSample {
 		livro.setTitulo("O Pescador");
 		
 	}
+	
+	
 }
