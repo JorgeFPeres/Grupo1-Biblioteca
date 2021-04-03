@@ -67,4 +67,8 @@ public class Livro {
 	public void setReservados(Integer reservados) {
 		this.reservados = reservados;
 	}
+	public void incrementarReservado() {
+		exemplares--;
+		reservados++;
+	}
 }
