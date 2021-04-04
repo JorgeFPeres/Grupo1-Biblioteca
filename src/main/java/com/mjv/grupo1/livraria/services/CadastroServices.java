@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mjv.grupo1.livraria.controller.ViaCepController;
 import com.mjv.grupo1.livraria.dto.CadastroDto;
+import com.mjv.grupo1.livraria.exception.config.BusinessException;
 import com.mjv.grupo1.livraria.model.Cadastro;
 import com.mjv.grupo1.livraria.model.Endereco;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
@@ -23,37 +24,42 @@ public class CadastroServices {
 	private PasswordEncoder encoder;
 
 	@Autowired
-	private CadastroRepository cadastroRepository;
+	private CadastroRepository cadRepository;
 
 	public List<Cadastro> listAll() {
-		return cadastroRepository.findAll();
+		return cadRepository.findAll();
 	}
 
 	public Cadastro findById(Integer id) {
-		return cadastroRepository.findById(id).orElse(null);
+		return cadRepository.findById(id).orElse(null);
 	}
 
-	public Cadastro save(CadastroDto dto) {
+	public Cadastro criarCadastro(CadastroDto dto) {
 		Cadastro cadastro = new Cadastro();
-		cadastro.setCpf(dto.getCpf());
-		cadastro.setEmail(dto.getEmail());
-		cadastro.setLogin(dto.getLogin());
-		cadastro.setNome(dto.getNome());
-		cadastro.setTelefone(dto.getTelefone());
-		Endereco endereco = viaCepCtrl.obterEndereco(dto.getCep());
-		cadastro.setEndereco(endereco);
-		return save(cadastro);
+		if (cadRepository.findByCpf(dto.getCpf()) == null) {
+			cadastro.setCpf(dto.getCpf());
+			cadastro.setEmail(dto.getEmail());
+			cadastro.setLogin(dto.getLogin());
+			cadastro.setNome(dto.getNome());
+			cadastro.setTelefone(dto.getTelefone());
+			Endereco endereco = viaCepCtrl.obterEndereco(dto.getCep());
+			cadastro.setEndereco(endereco);
+			save(cadastro);
+		}else {
+			throw new BusinessException("Usuário já cadastrado");
+		}
+		return cadastro;		
 	}
 
 	public Cadastro save(Cadastro cadastro) {
 		String senhaCriptografada = encoder.encode(cadastro.getLogin().getSenha());
 		cadastro.getLogin().setSenha(senhaCriptografada);
 
-		return cadastroRepository.save(cadastro);
+		return cadRepository.save(cadastro);
 	}
 
 	public void delete(Integer id) {
-		cadastroRepository.delete(findById(id));
+		cadRepository.delete(findById(id));
 	}
 
 }

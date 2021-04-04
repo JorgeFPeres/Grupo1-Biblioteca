@@ -24,7 +24,7 @@ public class CadastroController {
 	
 	@PostMapping
 	public ResponseEntity<Integer> salvar(@RequestBody CadastroDto body) {
-		Cadastro cad=cadastroServices.save(body);
+		Cadastro cad=cadastroServices.criarCadastro(body);
 		return new ResponseEntity<>(cad.getId(), HttpStatus.CREATED);
 	}
 	
