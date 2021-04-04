@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Login {
 
-	@Column(nullable = false, unique = true, length = 20)
+	@Column(nullable = false, length = 20)
 	private String usuario;
 	@Column(nullable = false)
 	private String senha;

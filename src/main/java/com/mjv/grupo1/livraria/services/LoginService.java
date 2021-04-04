@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.mjv.grupo1.livraria.config.security.JWTConstants;
 import com.mjv.grupo1.livraria.config.security.JWTUtils;
 import com.mjv.grupo1.livraria.dto.Sessao;
+import com.mjv.grupo1.livraria.exception.config.CampoObrigatorioException;
 import com.mjv.grupo1.livraria.model.Cadastro;
 import com.mjv.grupo1.livraria.model.Login;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
@@ -28,7 +29,12 @@ public class LoginService {
 	private PasswordEncoder encoder;
 
 	public Sessao logar(Login login) throws LoginException {
+		
 		Cadastro usuario = repository.findByLoginUsuario(login.getUsuario());
+
+		if(login.getUsuario().isEmpty())
+			throw new CampoObrigatorioException("Usuario");
+		
 		if(usuario!=null) {
 			
 			boolean senhaOk = encoder.matches(login.getSenha(),usuario.getLogin().getSenha());

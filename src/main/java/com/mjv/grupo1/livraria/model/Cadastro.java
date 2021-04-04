@@ -1,6 +1,7 @@
 package com.mjv.grupo1.livraria.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Cadastro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-//	@Column(nullable = false, unique = true, length = 11)
+	@Column(nullable = false, unique = true, length = 11)
 	private String cpf;
 //	@Column(nullable = false)
 	private String nome;
