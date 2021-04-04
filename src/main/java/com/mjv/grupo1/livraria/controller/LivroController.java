@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mjv.grupo1.livraria.model.Livro;
+import com.mjv.grupo1.livraria.model.library.Livro;
 import com.mjv.grupo1.livraria.repository.LivroRepository;
 import com.mjv.grupo1.livraria.services.LivroService;
 

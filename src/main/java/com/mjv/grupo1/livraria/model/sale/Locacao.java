@@ -1,4 +1,4 @@
-package com.mjv.grupo1.livraria.model;
+package com.mjv.grupo1.livraria.model.sale;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.mjv.grupo1.livraria.model.Cadastro;
+import com.mjv.grupo1.livraria.model.client.Cadastro;
 
 @Entity
 @Table(name = "locacao")

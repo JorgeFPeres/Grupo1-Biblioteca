@@ -4,7 +4,15 @@ import java.time.LocalDate;
 
 public class LocacaoItemDto {
 	private Integer idLivro;
+	private String titulo;
 	private LocalDate dataPrevisaoEntrega;
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 	public Integer getIdLivro() {
 		return idLivro;
 	}

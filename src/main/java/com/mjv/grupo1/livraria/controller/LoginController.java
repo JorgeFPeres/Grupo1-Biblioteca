@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mjv.grupo1.livraria.dto.Sessao;
-import com.mjv.grupo1.livraria.model.Login;
+import com.mjv.grupo1.livraria.model.client.Login;
 import com.mjv.grupo1.livraria.services.LoginService;
 
 @RestController

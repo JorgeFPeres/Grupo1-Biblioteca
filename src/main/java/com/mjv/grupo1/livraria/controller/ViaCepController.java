@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.mjv.grupo1.livraria.model.Endereco;
+import com.mjv.grupo1.livraria.exception.config.BusinessException;
+import com.mjv.grupo1.livraria.model.client.Endereco;
 
 @RestController
 public class ViaCepController {
@@ -18,7 +19,10 @@ public class ViaCepController {
 		String uri = "http://viacep.com.br/ws/{cep}/json/";
 
 		Endereco endereco = restTemplate.getForObject(uri, Endereco.class, cep);
-
+		
+		if (endereco == null)
+			throw new BusinessException("Endereço não localizado.");
+			
 		return endereco;
 	}
 

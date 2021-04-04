@@ -3,8 +3,8 @@ package com.mjv.grupo1.livraria.sample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mjv.grupo1.livraria.model.Cadastro;
-import com.mjv.grupo1.livraria.model.Livro;
+import com.mjv.grupo1.livraria.model.client.Cadastro;
+import com.mjv.grupo1.livraria.model.library.Livro;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
 
 @Component

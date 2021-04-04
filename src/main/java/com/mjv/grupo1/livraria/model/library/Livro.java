@@ -1,4 +1,4 @@
-package com.mjv.grupo1.livraria.model;
+package com.mjv.grupo1.livraria.model.library;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

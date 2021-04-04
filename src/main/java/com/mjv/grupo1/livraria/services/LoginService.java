@@ -12,8 +12,8 @@ import com.mjv.grupo1.livraria.config.security.JWTConstants;
 import com.mjv.grupo1.livraria.config.security.JWTUtils;
 import com.mjv.grupo1.livraria.dto.Sessao;
 import com.mjv.grupo1.livraria.exception.config.CampoObrigatorioException;
-import com.mjv.grupo1.livraria.model.Cadastro;
-import com.mjv.grupo1.livraria.model.Login;
+import com.mjv.grupo1.livraria.model.client.Cadastro;
+import com.mjv.grupo1.livraria.model.client.Login;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
 
 import lombok.RequiredArgsConstructor;

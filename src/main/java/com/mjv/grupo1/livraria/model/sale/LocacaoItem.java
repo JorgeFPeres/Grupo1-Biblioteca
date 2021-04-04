@@ -1,8 +1,11 @@
-package com.mjv.grupo1.livraria.model;
+package com.mjv.grupo1.livraria.model.sale;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,17 +13,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.mjv.grupo1.livraria.model.library.DisponibilidadeStatus;
+import com.mjv.grupo1.livraria.model.library.Livro;
+
 @Entity
 @Table(name = "loc_item")
 public class LocacaoItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable = false)
 	private LocalDate dataPrevisaoEntrega;
 	private LocalDate dataEntrega;
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
+	
+	@Enumerated(EnumType.STRING)
+	private DisponibilidadeStatus status;
 
 	@ManyToOne
 	@JoinColumn(name = "id_livro")
@@ -30,6 +41,12 @@ public class LocacaoItem {
 	@JoinColumn(name = "id_locacao")
 	private Locacao locacao;
 
+	public DisponibilidadeStatus getStatus() {
+		return status;
+	}
+	public void setStatus(DisponibilidadeStatus status) {
+		this.status = status;
+	}
 	public Locacao getLocacao() {
 		return locacao;
 	}

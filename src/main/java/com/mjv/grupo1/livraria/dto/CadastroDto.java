@@ -1,6 +1,6 @@
 package com.mjv.grupo1.livraria.dto;
 
-import com.mjv.grupo1.livraria.model.Login;
+import com.mjv.grupo1.livraria.model.client.Login;
 
 
 //@Getter

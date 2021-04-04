@@ -36,8 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(SWAGGER_WHITELIST).permitAll()
 		.antMatchers("/login").permitAll()
-		.antMatchers("/livros").permitAll()
-		.antMatchers(HttpMethod.POST, "/cadastros").permitAll()
+		.antMatchers("/livros/**").permitAll()
+		.antMatchers("/cadastros/**").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
 		
 		.anyRequest().authenticated()
