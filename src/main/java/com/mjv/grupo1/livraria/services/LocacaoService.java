@@ -13,6 +13,7 @@ import com.mjv.grupo1.livraria.model.Cadastro;
 import com.mjv.grupo1.livraria.model.Livro;
 import com.mjv.grupo1.livraria.model.Locacao;
 import com.mjv.grupo1.livraria.model.LocacaoItem;
+import com.mjv.grupo1.livraria.model.LocacaoStatus;
 import com.mjv.grupo1.livraria.repository.CadastroRepository;
 import com.mjv.grupo1.livraria.repository.LivroRepository;
 import com.mjv.grupo1.livraria.repository.LocacaoRepository;
@@ -22,7 +23,7 @@ import com.mjv.grupo1.livraria.repository.LocacaoRepository;
 @Service
 public class LocacaoService {
 	@Autowired
-	private LocacaoRepository repository;
+	private LocacaoRepository locRepository;
 	
 	@Autowired
 	private CadastroRepository cadRepository;
@@ -31,15 +32,17 @@ public class LocacaoService {
 	private LivroRepository livroRepository;
 	
 	public void gerarLocacao(LocacaoDto dto) {
-		Cadastro cad = cadRepository.findById(dto.getIdCadastro()).orElse(null);
-		if(cad==null)
-			throw new RegistroNaoLocalizaoException("Cadastro", dto.getIdCadastro());
+		Cadastro cadastro = cadRepository.findByCpf(dto.getCpf());
+		if(cadastro==null)
+			throw new RegistroNaoLocalizaoException("Cadastro", dto.getCpf());
 		
-		Locacao loc = new Locacao();
+		Locacao locacao = new Locacao();
 		
-		loc.setDataAgendamento(dto.getDataAgendamento());
-		loc.setCadastro(cad);
-		loc.setDataRetirada(dto.getDataRetirada());
+		locacao.setDataAgendamento(dto.getDataAgendamento());
+		locacao.setCadastro(cadastro);
+		locacao.setDataRetirada(dto.getDataRetirada());
+		locacao.setStatus(LocacaoStatus.RESERVADA);
+		locacao.setValorTotal(0.0);
 		
 		for(LocacaoItemDto i: dto.getItens()) {
 			i.getDataPrevisaoEntrega();
@@ -50,17 +53,17 @@ public class LocacaoService {
 			item.setLivro(livro);
 			item.setDataPrevisaoEntrega(i.getDataPrevisaoEntrega());
 			item.setValorDiaria(livro.getValorDiaria());
-			item.setDiarias(calcularDiarias(loc.getDataRetirada(), i.getDataPrevisaoEntrega()));
+			item.setDiarias(calcularDiarias(locacao.getDataRetirada(), i.getDataPrevisaoEntrega()));
 			item.setValorLocacao(item.getValorDiaria() * item.getDiarias());
 			
-			loc.addItem(item);
+			locacao.addItem(item);
 			
-			livro.incrementarReservado();
+//			livro.incrementarReservado();
 			
 			livroRepository.save(livro);
 		}
 		
-		repository.save(loc);
+		locRepository.save(locacao);
 		
 		
 	

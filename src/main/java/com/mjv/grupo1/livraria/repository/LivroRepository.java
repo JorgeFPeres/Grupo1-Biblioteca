@@ -6,5 +6,5 @@ import com.mjv.grupo1.livraria.model.Livro;
 
 public interface LivroRepository extends JpaRepository<Livro, Integer>{
 
-	
+	Livro findByTitulo(String titulo);
 }

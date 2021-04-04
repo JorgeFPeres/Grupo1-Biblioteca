@@ -1,5 +1,6 @@
 package com.mjv.grupo1.livraria.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,24 +14,21 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String isbn, titulo;
+	private String isbn;
+	
+	@Column(nullable = false)
+	private String titulo;
+	
+	@Column(nullable = false)
 	private Double valorDiaria;
-	private Integer exemplares, reservados;
+	
+	@Column(nullable = false)
+	private Integer exemplares;
+	
+	@Column(nullable = false)
+	private Integer reservados;
 	
 	
-	public Livro() {
-		
-	}
-	
-	public Livro(Integer id, String isbn, String titulo, Double valorDiaria, Integer exemplares, Integer reservados) {
-		this.id = id;
-		this.isbn = isbn;
-		this.titulo = titulo;
-		this.valorDiaria = valorDiaria;
-		this.exemplares = exemplares;
-		this.reservados = reservados;
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -67,8 +65,8 @@ public class Livro {
 	public void setReservados(Integer reservados) {
 		this.reservados = reservados;
 	}
-	public void incrementarReservado() {
-		exemplares--;
-		reservados++;
-	}
+//	public void incrementarReservado() {
+//		exemplares--;
+//		reservados++;
+//	}
 }

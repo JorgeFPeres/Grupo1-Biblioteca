@@ -7,7 +7,16 @@ public class LocacaoDto {
 	private LocalDate dataAgendamento;
 	private LocalDate dataRetirada;
 	private Integer idCadastro;
+	private String cpf;
 	private List<LocacaoItemDto> itens;
+	
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getCpf() {
+		return cpf;
+	}
 	public LocalDate getDataRetirada() {
 		return dataRetirada;
 	}

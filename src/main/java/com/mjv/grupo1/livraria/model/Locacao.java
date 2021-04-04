@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,23 +22,49 @@ import com.mjv.grupo1.livraria.model.Cadastro;
 @Entity
 @Table(name = "locacao")
 public class Locacao {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable = false)
 	private LocalDate dataAgendamento;
 	private LocalDate dataRetirada;
-	private LocalDate dataFinalizacao;
+	
+	@Column(nullable = false)
+	private LocalDate dataEntrega;
+	
 	@OneToMany(mappedBy = "locacao", cascade = CascadeType.PERSIST)
 	private List<LocacaoItem> itens = new ArrayList<LocacaoItem>();
+	
 	@ManyToOne
 	@JoinColumn(name = "id_cadastro")
 	private Cadastro cadastro;
-	private Double valorTotal = 0.0;
+	private Double valorTotal;
+	
+	@Enumerated(EnumType.STRING)
+	private LocacaoStatus status;
 
 	public void addItem(LocacaoItem item) {
 		item.setLocacao(this);
 		this.valorTotal = this.valorTotal + item.getValorLocacao();
 		itens.add(item);
+	}
+	
+	public LocalDate getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(LocalDate dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+
+	public LocacaoStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(LocacaoStatus status) {
+		this.status = status;
 	}
 
 	public Double getValorTotal() {
@@ -79,11 +108,11 @@ public class Locacao {
 	}
 
 	public LocalDate getDataFinalizacao() {
-		return dataFinalizacao;
+		return dataEntrega;
 	}
 
 	public void setDataFinalizacao(LocalDate dataFinalizacao) {
-		this.dataFinalizacao = dataFinalizacao;
+		this.dataEntrega = dataFinalizacao;
 	}
 
 	public List<LocacaoItem> getItens() {
