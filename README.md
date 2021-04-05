@@ -19,7 +19,6 @@ Como será possivel retirar mais de um livro em cadaLocação, deverá registrar
 ### DIAGRAMA INICAL DO PROJETO
 
 ![WhatsApp Image 2021-04-05 at 14 39 02](https://user-images.githubusercontent.com/77279633/113605254-c8f9d900-961c-11eb-9d56-18dcf3d130c8.jpeg)
-![WhatsApp Image 2021-04-05 at 15 10 18](https://user-images.githubusercontent.com/77279633/113608533-19733580-9621-11eb-87f1-2dc46d270f30.jpeg)
 
 
 
@@ -34,6 +33,7 @@ e no final adiciona a uma lista a locação juntamente com o Id do cadastro e do
 A classe Endereco, no pacote "model" consome uma API, onde é colocado apenas o CEP do cliente e retorna todos os dados, autopreenchendo os campos, vinculado à classe Cadastro do mesmo pacote.
 
 ![WhatsApp Image 2021-04-05 at 15 08 45](https://user-images.githubusercontent.com/77279633/113608402-edf04b00-9620-11eb-9c1c-a6ceb95fbc5c.jpeg)
+![WhatsApp Image 2021-04-05 at 15 10 18](https://user-images.githubusercontent.com/77279633/113608533-19733580-9621-11eb-87f1-2dc46d270f30.jpeg)
 
 
 #### AUTORES
