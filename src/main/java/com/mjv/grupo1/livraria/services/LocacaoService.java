@@ -49,19 +49,31 @@ public class LocacaoService {
 				item.setDiarias(calcularDiarias(locacao.getDataRetirada(), item.getDataPrevisaoEntrega()));
 				item.setValorLocacao(item.getValorDiaria() * item.getDiarias());
 				locacao.addItem(item);
+				
+				livro.incrementarReservados();
+				
+				livroRepository.save(livro);
 			}else {
 				LocacaoItem item = new LocacaoItem();
 				item.setLivro(livro);
 				item.setStatus(DisponibilidadeStatus.INDISPONIVEL);
+				item.setValorLocacao(0d);
+				locacao.addItem(item);
 			}
-				
-//			livro.incrementarReservado();
-
+		}
+		locRepository.save(locacao);
+	}
+	
+	public void gerarDevolucao(String cpf) {
+		
+		Locacao locacao = locRepository.findById(cadRepository.findByCpf(cpf).getId()).orElse(null);
+		
+		for (LocacaoItem i : locacao.getItens()) {
+			Livro livro = livroService.buscarLivro(i.getLivro().getTitulo());
+			livro.incrementarExemplares();
+			
 			livroRepository.save(livro);
 		}
-
-		locRepository.save(locacao);
-
 	}
 
 	private Integer calcularDiarias(LocalDate dataRetirada, LocalDate dataPrevisaoEntrega) {

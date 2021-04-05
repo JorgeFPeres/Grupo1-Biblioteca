@@ -65,8 +65,12 @@ public class Livro {
 	public void setReservados(Integer reservados) {
 		this.reservados = reservados;
 	}
-//	public void incrementarReservado() {
-//		exemplares--;
-//		reservados++;
-//	}
+	public void incrementarReservados() {
+		this.reservados++;
+		this.exemplares--;
+	}
+	public void incrementarExemplares() {
+		this.exemplares++;
+		this.reservados--;
+	}
 }
