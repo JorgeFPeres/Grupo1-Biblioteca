@@ -1,18 +1,18 @@
 # Estrutura do Projeto
 
-Para iniciar será necessário o Cadastro contendo oscampos, Id, Nome, CPF, Email, Telefone,Login, Senha
+Para iniciar será necessário o Cadastro contendo os campos, Id, Nome, CPF, Email, Telefone,Login, Senha,
 
-O campo login pode conter caracteres que representamcpf, telefone ou apelido com até 20caracteres
+O campo login pode conter caracteres que representam cpf, telefone ou apelido com até 20 caracteres,
 
-Não poderá ser duplicado os campos cpf e login nabase de dados
+Não poderá ser duplicado os campos cpf e login na base de dados
 
-Para o cadastro deverá ter o seu endereço atravésuma tabela de endereço com os campos:Id, Cep, Logradouro, Numero, Bairro, Localidade, Uf,IBGE.
+Para o cadastro deverá ter o seu endereço através de uma tabela de endereço com os campos: Id, Cep, Logradouro, Numero, Bairro, Localidade, Uf, IBGE.
 
-Será necessário também cadastrar os livros com oscampos: Id, ISBN, Titulo, Valor da Diaria,Número de exemplares do livro e Número dos exemplares reservados.
+Será necessário também cadastrar os livros com os campos: Id, ISBN, Titulo, Valor da Diaria, Número de exemplares do livro e número dos exemplares reservados.
 
-Para realizar a locação deverá armazenar as informaçõesabaixo: Id, Data Agendamento, DataRetirada, Data Finalizacao,  Valor Total e o StatusLocação(RESERVADA, EFETIVADA,FINALIZADA
+Para realizar a locação deverá armazenar as informações a seguir: Id, Data Agendamento, Data Retirada, Data Finalizacao,  Valor Total e o Status de Locação(RESERVADA, EFETIVADA,FINALIZADA
 
-Como será possivel retirar mais de um livro em cadaLocação, deverá registrar estes livrosselecionados incluindo os campos: Data Previsao Entrega,Data Entrega, Numero de diarias(data entrega - data retirada), Valor Diaria, ValorLocação(valor diaria * diarias
+Como será possivel retirar mais de um livro em cada Locação, deverá registrar estes livros selecionados incluindo os campos: Data Previsao Entrega, Data Entrega, Numero de diarias(data entrega - data retirada), Valor Diaria, ValorLocação(valor diaria * diarias)
 
 
 
