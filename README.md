@@ -25,7 +25,7 @@ Como será possivel retirar mais de um livro em cadaLocação, deverá registrar
 
 Consiste no aluguél de livros , onde livro é definido como uma entidade e é vinculado à locação e ao cliente, definido na classe de cadastro.
 
-No pacote de "services" na classe LocacaoService, é definido a regra de negócio, assim como o lançamento de exceções para gerir a locação corretamente, o vinculo acontece com
+No pacote de "services" na classe LocacaoService, é definido a regra de negócio através do método "gerarLocacao", assim como o lançamento de exceções para gerir a locação corretamente, o vinculo acontece com
 o cadastro quando ele está no banco de dados caso contrário lançará a exceção, essa classe também é responsável pelos cálculos realizados para atribuir valor e status da locação,
 e no final adiciona a uma lista a locação juntamente com o Id do cadastro e do livro adicionado a esta lista.
 
