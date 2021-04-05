@@ -19,6 +19,8 @@ Como será possivel retirar mais de um livro em cadaLocação, deverá registrar
 ### DIAGRAMA INICAL DO PROJETO
 
 ![WhatsApp Image 2021-04-05 at 14 39 02](https://user-images.githubusercontent.com/77279633/113605254-c8f9d900-961c-11eb-9d56-18dcf3d130c8.jpeg)
+![WhatsApp Image 2021-04-05 at 15 10 18](https://user-images.githubusercontent.com/77279633/113608533-19733580-9621-11eb-87f1-2dc46d270f30.jpeg)
+
 
 
 ### Funcionamento da API
