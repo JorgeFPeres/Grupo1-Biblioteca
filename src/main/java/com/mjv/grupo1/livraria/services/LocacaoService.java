@@ -74,6 +74,9 @@ public class LocacaoService {
 			
 			livroRepository.save(livro);
 		}
+		locacao.setStatus(LocacaoStatus.FINALIZADA);
+		
+		locRepository.save(locacao);
 	}
 
 	private Integer calcularDiarias(LocalDate dataRetirada, LocalDate dataPrevisaoEntrega) {
