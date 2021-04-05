@@ -74,9 +74,21 @@ public class LocacaoService {
 			
 			livroRepository.save(livro);
 		}
+		locacao.setDataFinalizacao(LocalDate.now());
 		locacao.setStatus(LocacaoStatus.FINALIZADA);
 		
 		locRepository.save(locacao);
+	}
+	
+	public Locacao consultarLocacao(String cpf) {
+		
+		Locacao locacao = locRepository.findById(cadRepository.findByCpf(cpf).getId()).orElse(null);
+		
+		for (LocacaoItem i : locacao.getItens()) {
+			i.getLivro().getTitulo();
+			locacao.setDiariasConcluidas(calcularDiarias(locacao.getDataRetirada(), LocalDate.now()));
+		}
+		return locacao;
 	}
 
 	private Integer calcularDiarias(LocalDate dataRetirada, LocalDate dataPrevisaoEntrega) {

@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.mjv.grupo1.livraria.model.client.Cadastro;
 
@@ -32,7 +33,7 @@ public class Locacao {
 	private LocalDate dataRetirada;
 	
 	@Column(nullable = false)
-	private LocalDate dataEntrega;
+	private LocalDate dataFinalizacao;
 	
 	@OneToMany(mappedBy = "locacao", cascade = CascadeType.PERSIST)
 	private List<LocacaoItem> itens = new ArrayList<LocacaoItem>();
@@ -41,6 +42,9 @@ public class Locacao {
 	@JoinColumn(name = "id_cadastro")
 	private Cadastro cadastro;
 	private Double valorTotal;
+	
+	@Transient
+	private Integer diariasConcluidas;
 	
 	@Enumerated(EnumType.STRING)
 	private LocacaoStatus status;
@@ -51,12 +55,20 @@ public class Locacao {
 		itens.add(item);
 	}
 	
+	public Integer getDiariasConcluidas() {
+		return diariasConcluidas;
+	}
+
+	public void setDiariasConcluidas(Integer diariasConcluidas) {
+		this.diariasConcluidas = diariasConcluidas;
+	}
+
 	public LocalDate getDataEntrega() {
-		return dataEntrega;
+		return dataFinalizacao;
 	}
 
 	public void setDataEntrega(LocalDate dataEntrega) {
-		this.dataEntrega = dataEntrega;
+		this.dataFinalizacao = dataEntrega;
 	}
 
 	public LocacaoStatus getStatus() {
@@ -108,11 +120,11 @@ public class Locacao {
 	}
 
 	public LocalDate getDataFinalizacao() {
-		return dataEntrega;
+		return dataFinalizacao;
 	}
 
 	public void setDataFinalizacao(LocalDate dataFinalizacao) {
-		this.dataEntrega = dataFinalizacao;
+		this.dataFinalizacao = dataFinalizacao;
 	}
 
 	public List<LocacaoItem> getItens() {
