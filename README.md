@@ -37,7 +37,7 @@ A classe Endereco, no pacote "model" consome uma API, onde é colocado apenas o 
 
 
 #### AUTORES
-- Leonardo Richard, Davi Mendonca, Jorge Peres, Rafael Bitu
+- Leonardo Richard, Davi Mendonca, Jorge Peres, Rafael Bitu, Aziel
 
 #### REFERÊNCIAS
 
