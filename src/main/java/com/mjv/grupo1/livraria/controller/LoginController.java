@@ -12,12 +12,16 @@ import com.mjv.grupo1.livraria.dto.Sessao;
 import com.mjv.grupo1.livraria.model.client.Login;
 import com.mjv.grupo1.livraria.services.LoginService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(path = "/login")
 public class LoginController {
 	@Autowired
 	private LoginService service;
-	@PostMapping
+	
+	@PostMapping("/login")
+	@ApiOperation(value = "Realiza o login de um usuário já cadastrado.")
 	public Sessao logar(@RequestBody Login login) throws LoginException {
 		return service.logar(login);
 	}

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,13 +16,10 @@ import com.mjv.grupo1.livraria.dto.CadastroDto;
 import com.mjv.grupo1.livraria.model.client.Cadastro;
 import com.mjv.grupo1.livraria.services.CadastroServices;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RequestMapping(path = "/cadastros")
 @RestController
-@Api("REST API Cadastros")
-@CrossOrigin(origins = "*")
 public class CadastroController {
 	
 	@Autowired
