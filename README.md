@@ -31,6 +31,9 @@ e no final adiciona a uma lista a locação juntamente com o Id do cadastro e do
 
 A classe Endereco, no pacote "model" consome uma API, onde é colocado apenas o CEP do cliente e retorna todos os dados, autopreenchendo os campos, vinculado à classe Cadastro do mesmo pacote.
 
+![WhatsApp Image 2021-04-05 at 15 08 45](https://user-images.githubusercontent.com/77279633/113608402-edf04b00-9620-11eb-9c1c-a6ceb95fbc5c.jpeg)
+
+
 #### AUTORES
 - Leonardo Richard, Davi Mendonca, Jorge Peres, Rafael Bitu
 
