@@ -33,6 +33,8 @@ A classe Endereco, no pacote "model" consome uma API, onde é colocado apenas o 
 
 #### REFERÊNCIAS
 
+https://github.com/glysns/desafio-final
+
 https://www.devmedia.com.br/forum/crud-em-java-poo-apenas-sugestoes-de-melhorias/605391
 
 https://www.clubedohardware.com.br/topic/1394643-chamar-metodo-dentro-de-construtor/
