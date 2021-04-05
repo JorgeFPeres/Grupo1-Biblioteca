@@ -30,3 +30,15 @@ e no final adiciona a uma lista a locação juntamente com o Id do cadastro e do
 
 A classe Endereco, no pacote "model" consome uma API, onde é colocado apenas o CEP do cliente e retorna todos os dados, autopreenchendo os campos, vinculado à classe Cadastro do mesmo pacote.
 
+#### REFERÊNCIAS
+
+https://www.devmedia.com.br/forum/crud-em-java-poo-apenas-sugestoes-de-melhorias/605391
+
+https://www.clubedohardware.com.br/topic/1394643-chamar-metodo-dentro-de-construtor/
+
+https://giuliana-bezerra.medium.com/gerenciando-dependencias-com-o-mavem-em-projetos-java-6703fce91fb6
+
+https://arthur-almeida.medium.com/consumindo-uma-api-de-maneira-simples-com-java-2a386010e4b9
+
+https://www.oracle.com/br/technical-resources/article/java/erros-java-exceptions.html
+
