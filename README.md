@@ -1,11 +1,17 @@
 # Grupo1-Biblioteca
 
 Para iniciar será necessário o Cadastro contendo oscampos, Id, Nome, CPF, Email, Telefone,Login, Senha
+
 O campo login pode conter caracteres que representamcpf, telefone ou apelido com até 20caracteres
+
 Não poderá ser duplicado os campos cpf e login nabase de dados
+
 Para o cadastro deverá ter o seu endereço atravésuma tabela de endereço com os campos:Id, Cep, Logradouro, Numero, Bairro, Localidade, Uf,IBGE.
+
 Será necessário também cadastrar os livros com oscampos: Id, ISBN, Titulo, Valor da Diaria,Número de exemplares do livro e Número dos exemplares reservados.
+
 Para realizar a locação deverá armazenar as informaçõesabaixo: Id, Data Agendamento, DataRetirada, Data Finalizacao,  Valor Total e o StatusLocação(RESERVADA, EFETIVADA,FINALIZADA
+
 Como será possivel retirar mais de um livro em cadaLocação, deverá registrar estes livrosselecionados incluindo os campos: Data Previsao Entrega,Data Entrega, Numero de diarias(data entrega - data retirada), Valor Diaria, ValorLocação(valor diaria * diarias
 
 
