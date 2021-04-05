@@ -1,4 +1,4 @@
-# Grupo1-Biblioteca
+# Estrutura do Projeto
 
 Para iniciar será necessário o Cadastro contendo oscampos, Id, Nome, CPF, Email, Telefone,Login, Senha
 
